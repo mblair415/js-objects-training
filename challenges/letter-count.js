@@ -30,4 +30,18 @@
 
 */
 
-// YOUR CODE HERE
+function letterCount(word) {
+  var result = {};
+
+  for (var i = 0; i < word.length; i++) {
+    if (result[word[i]] === undefined) {
+      result[word[i]] = 1;
+    } else {
+      result[word[i]] += 1;
+    }
+  }
+  console.log(result);
+  return result;
+}
+
+// letterCount("apple");
