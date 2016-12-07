@@ -1,7 +1,7 @@
 /*
 
-  In this challenge you will simulate the movement of a ping-pong, bouncing back and forth across a
-  table.
+  In this challenge you will simulate the movement of a ping-pong, bouncing back
+  and forth across a table.
 
   Create a function `pingPong` that accepts an array, and returns the *same* array
   with the ping-pong moved one cell. Each time the ping-pong moves, you must increment the
@@ -38,3 +38,43 @@
 */
 
 // YOUR CODE HERE
+var ballSpeed = 1; // this will move ball forward or backwards, also determines speed.
+var ballRight = true; // determins if the ball should be forward or backwad
+var stepCounter = 0; // tracks number of steps the ball has moved.
+var ballIndex = 0; // tracks the literal position of the ball on the table
+
+function pingPong(table) {
+  var ball = {};
+  var tableLength = table.length -1;  // allows table to be any length
+  // var play = ballMove(ballIndex, ball, tableLength);
+
+  table.forEach(function(ballPosition) {
+    if (ballPosition) { // picks spot with the ball.  only true value.
+      ballIndex = table.indexOf(ballPosition); // position of the ball
+      ball = table[ballPosition]; // allows the ball itself to be altered.
+      ballMove(ballIndex, table.length-1); // moves the ball, feeds position of ball and length of table.  will need to feed ballSpeed in here when that gets written.
+      console.log(ballIndex)
+    }
+  })
+}
+
+function ballMove(ballIndex, tableLength) {
+  if (ballRight && ballIndex + ballSpeed < tableLength) {
+    ballIndex += ballSpeed;
+  } else if (ballRight) {
+    ballIndex = tableLength;
+    ballRight = false;
+  } else if (!ballRight && ballIndex - ballSpeed > tableLength) {
+    ballIndex -= ballSpeed;
+  } else if (!ballRight) {
+    ballIndex = 0;
+    ballRight = true;
+  }
+  ballIndex += ballSpeed;
+  stepCounter += 1;
+
+  return ballIndex;
+}
+
+var table = [{steps: stepCounter}, null, null, null];
+pingPong(table);

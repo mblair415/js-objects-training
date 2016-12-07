@@ -34,3 +34,57 @@
 */
 
 // YOUR CODE HERE
+function daysUntilDate(dateString) {
+  var today = Date.now();
+  var futureDay = Date.parse(dateString);
+
+  return Math.round(Math.abs((futureDay - today)/86400000)) + " days";
+}
+// console.log(daysUntilDate("03/03/2026"));
+
+function birthdayReminder(birthdayList) {
+  var today = Date.now();
+
+  birthdayList.forEach(function(stuff) {
+    var nextDOB = stuff.dob.split("/");
+    nextDOB.pop();
+    if (nextDOB > today) {
+
+    }
+
+  }
+}
+
+
+
+/*
+birthdaylist forEach someVariable
+var  nextDOB = someVariable.dob.split("/")
+check to see if month is less than current month
+check to see if month is less than current month and day is less than current day
+
+
+
+*/
+
+
+/*
+Next, create a function `birthdayReminder` that accepts an array of objects,
+containing a person's date of birth (dob), and returns an array of reminder
+messages (strings).
+
+```javascript
+birthdayReminder([
+  {
+    name: "Jack",
+    dob: "10/31/2013"
+  },
+  {
+    name: "Jill",
+    dob: "4/01/1975"
+  }
+]);
+
+//=> [
+//      "Jack's birthday is in 75 days",
+*/

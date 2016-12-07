@@ -45,3 +45,23 @@ function letterCount(word) {
 }
 
 // letterCount("apple");
+
+function letterCount1(word) {
+  var wordToCount = word.toLowerCase().split("")
+  var alphabet = "abcdefghijklmnopqrstuvwxyz"
+  var result = {};
+
+  wordToCount.forEach(function(element) {
+    if (alphabet.indexOf(element) !== -1) {
+      if (result[element] === undefined) {
+        result[element] = 1;
+      } else {
+        result[element] += 1;
+      }
+    }
+  })
+  console.log(result);
+  return result;
+}
+
+letterCount1("APpl!!$e");

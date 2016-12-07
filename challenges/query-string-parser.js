@@ -1,7 +1,7 @@
 /*
 
-  Create a function `parseQueryString` that accepts a query string parameter as an argument, and
-  converts it into an object, using the following rules:
+  Create a function `parseQueryString` that accepts a query string parameter as
+  an argument, and converts it into an object, using the following rules:
 
     * An equals sign (`=`) separates a *key* on the left from a *value* on the right.
     * An ampersand (`&`) separates key-value pairs from each other.
@@ -44,4 +44,20 @@
 
 */
 
-// YOUR CODE HERE
+function parseQueryString(string) {
+  var result = {};
+  var ampersandRemove = string.split("&");
+
+  var removeEqual = ampersandRemove.map(function(phrase) {
+    return phrase.split("=");
+  })
+  removeEqual.forEach(function(keyValue) {
+    result[keyValue[0]] = keyValue[1];
+  })
+  return result;
+}
+
+console.log(parseQueryString("first=alpha&last=omega"));
+// ["first=alpha", "last=omega"]  // step 1
+// [["first", "alpha"], ["last", "omega"]]  // step 2
+// result[thing[0][0]] = thing[0][1]  // first: alpha   step 3
